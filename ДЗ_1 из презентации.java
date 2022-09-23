@@ -62,19 +62,19 @@ public class Main
         meth4(x1,y1,x2,y2);
 
         }
-        static void meth1(int ch1){
+        static void meth1(int ch1){//поиск разницы между числом и 21
             int razn=ch1-21;
             System.out.println(razn);
         }
-        static void meth2(int ch1, int ch2){
+        static void meth2(int ch1, int ch2){//среднее арифметическое
             int srAriph=(ch1+ch2)/2;
             System.out.println(srAriph);
         }
-        static void meth3(int ch1, int ch2){
+        static void meth3(int ch1, int ch2){//среднее геометрическое
             double srGeom=Math.sqrt(ch1*ch2);
             System.out.println(srGeom);
         }
-        static void meth4(double x1, double y1, double x2, double y2){
+        static void meth4(double x1, double y1, double x2, double y2){//расстояние между двумя точками
             double rast=Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
             System.out.println(rast);
         }
