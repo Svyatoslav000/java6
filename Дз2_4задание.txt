@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Double> aL = new ArrayList<>();//создаем лист
+        LinkedList<Double> lL = new LinkedList<>();//создаем лист
+        randomlist(aL, lL); 
+        vremya(aL, lL);
+        
+    }
+    public static void randomlist(ArrayList aL, LinkedList lL) {//метод для заполнения листов
+        int vsego = 1000000;
+        for (int i = 0; i < vsego; i++) {//добавляем рандомные элементы в листы
+            aL.add((int)(Math.random())*100);//делаем числа до 0 до 100
+            lL.add((int)(Math.random())*100);//делаем числа до 0 до 100
+           
+        }
+        
+    }
+    public static void vremya(ArrayList aL, LinkedList lL){//метод для счета времени
+        int vsego = 1000000;
+        int kolvo = 100000;
+        long startTime = System.currentTimeMillis();//измеряем время начала для 1 листа
+        for (int i = 0; i < kolvo; i++) {//выбираем нужное количетсов элементов
+            aL.get((int) (Math.random() * (vsego - 1)));//рандом делает числа от 0 до 1, так что мы умножаем для нахождения позиции для гета
+        }
+        long a=System.currentTimeMillis() - startTime;//измерение времени конца для 1 листа
+        System.out.println(a);
+
+        startTime = System.currentTimeMillis();//время начала для 2 листа
+        for (int i = 0; i < kolvo; i++) {
+            lL.get((int) (Math.random() * (vsego - 1)));
+        }
+        long b = System.currentTimeMillis() - startTime;//время конца для 2 листа
+        System.out.println(b);
+        if (a < b){
+            System.out.println("ArrayList быстрее");
+        }
+        else{
+            System.out.println("LinkedList быстрее");
+        }
+    }
+}

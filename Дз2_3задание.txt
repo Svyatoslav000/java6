@@ -1,0 +1,24 @@
+import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
+
+
+public class Main
+{
+	public static void main(String[] args) {
+		String[] lst = {"ываы","ыа","миьтпр","ыаываы","ываыаы","ываыавы","ыа","ыа","прара","еншлор","миьтпр","кенкрап","глрщ","ичсаыуаыв"};//элементы
+		ArrayList<String> lst2 = new ArrayList<>();
+	    for(String a:lst){//идем по элементам
+	        lst2.add(a);//добавляем элементы в лист
+	    }
+	    System.out.println(lst2);
+	    correct(lst2);
+	}
+	
+	static void correct(ArrayList lst2) { 
+	    HashSet set = new HashSet(lst2);//коллекция уникальных элементов
+	    lst2.clear();//очищаем
+        lst2.addAll(set);//добавляем уникальные элементы
+        System.out.println(set);
+	}
+}

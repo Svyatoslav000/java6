@@ -1,0 +1,23 @@
+import java.util.Scanner;
+import java.util.HashMap;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String string = in.nextLine();
+        String[] slova = string.split("\\s+");/*split возвращает массив*/
+        HashMap<String, Integer> slovoToCount = new HashMap<>();/*храним пары слово-количество*/
+        for (String slovo : slova)//идем по словам
+        {
+            if (!slovoToCount.containsKey(slovo))
+            {
+                slovoToCount.put(slovo, 0);//количество словставим 0 если слова еще не было
+            }
+            slovoToCount.put(slovo, slovoToCount.get(slovo) + 1);//добавляем 1 к счетчику слова
+        }
+        for (String slovo : slovoToCount.keySet())//печатаем с помощью цикла элементы в формате слово = число
+        {
+            System.out.println(slovo + " = " + slovoToCount.get(slovo));
+        }
+    }
+}

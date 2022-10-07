@@ -1,0 +1,86 @@
+import java.util.Stack;
+
+class Builder{
+    
+    public StringBuilder strBuilder;//делегировали билдер
+    public StringBuilder dopBuilder;//создаем доп билдер для удобства
+    public Stack Back = new Stack();  
+    
+    
+    public Builder(String str) {//инициализировали
+        strBuilder = new StringBuilder(str);
+        System.out.println(strBuilder);
+    }
+
+    
+    public Builder reverse() {//сделали метод переворота строк с возможностью отката
+        
+        strBuilder.reverse();
+        System.out.println(strBuilder);
+        dopBuilder = new StringBuilder(strBuilder);
+        Back.push(dopBuilder.reverse());
+        return this;
+    }
+
+
+    public Builder append(String s) {//вставка в конец с функцией отката
+        
+        strBuilder.append(s);
+        System.out.println(strBuilder);
+        dopBuilder = new StringBuilder(strBuilder);
+        Back.push(dopBuilder.delete(dopBuilder.length()-s.length(), dopBuilder.length()));
+        return this;
+    }
+
+    public Builder delete(int start, int end) {//удаление с функцией отката
+        
+        String removed = strBuilder.substring(start, end);
+        strBuilder.delete(start, end);
+        System.out.println(strBuilder);
+        dopBuilder = new StringBuilder(strBuilder);
+        Back.push(dopBuilder.insert(start, removed));
+        return this;
+    }
+
+
+    public Builder replace(int start, int end, String s) {//заменяет символы на другие символы указанной строки с функцией отката
+        
+        String removed = strBuilder.substring(start, end);
+        strBuilder.replace(start, end, s);
+        System.out.println(strBuilder);
+        dopBuilder = new StringBuilder(strBuilder);
+        Back.push(dopBuilder.replace(start, end, removed));
+        return this;
+    }
+
+
+    public Builder insert(int index, String s) {//вставка подстроки в указанную позицию с функцией отката
+        
+        strBuilder.insert(index, s);
+        System.out.println(strBuilder);
+        dopBuilder = new StringBuilder(strBuilder);
+        Back.push(dopBuilder.delete(index, index+ s.length()));
+        return this;
+    }
+
+
+    public Builder undo(){//откат
+        if (Back!=null) {
+            System.out.println(Back.pop()) ;
+        }
+        
+        return this;
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        Builder str_builder = new Builder("jkjfjfgfjejeog");
+        str_builder.reverse();
+        str_builder.insert(4,"P");
+        str_builder.append("lllllllllllllll");
+        str_builder.undo();
+        str_builder.undo();
+    }
+}
