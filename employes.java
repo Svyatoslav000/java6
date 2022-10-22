@@ -8,7 +8,6 @@ public class employes extends emplList {//класс работников с о�
         this.Mounths = Mounths;
     }
 
-    @Override
     public double getSalary() {
         return Mounths;
     }
