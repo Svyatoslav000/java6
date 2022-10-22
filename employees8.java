@@ -8,7 +8,6 @@ public class employees8 extends emplList {//класс работников с �
         this.hour = hour;
     }
 
-    @Override
     public double getSalary() {
         return 20.8 * 8 * hour;
     }
