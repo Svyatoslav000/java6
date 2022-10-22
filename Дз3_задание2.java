@@ -44,7 +44,6 @@ public class Main {
     public static void sortM(List<emplList> empl) {//сортировка для листов
         System.out.println();
         empl.sort(new Comparator<emplList>() {
-            @Override
             public int compare(emplList o1, emplList o2) {
                 if (o1.getSalary() == o2.getSalary()) return 0;
                 else if (o1.getSalary() < o2.getSalary()) return 1;
