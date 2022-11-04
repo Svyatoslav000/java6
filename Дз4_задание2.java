@@ -5,6 +5,9 @@ public class Main
 
     public static void main(String[] args) {
         Reader Pety = new Reader("Иванов П.П.", 1330024, "ФАРМАЦИЯ","10-04-1990", 845458877);//определяем петю
+        Reader Vasya = new Reader("Васяев В.В.", 321432, "Педиатрия","9-04-1990", 845458888);
+        Reader Tamara = new Reader("Бибаева Т.П.", 23442, "Стоматология","11-04-1990", 845458899);
+        Reader[] readeri = {Pety, Vasya, Tamara};
         Pety.takeBook(2);//берем 2 книги
         String[] knigi = {"ФИЗИОЛОГИЯ", "Анатомия"};//наши книги
         Pety.takeBook(knigi);
