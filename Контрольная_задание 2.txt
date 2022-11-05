@@ -1,0 +1,164 @@
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+public class Main {
+    public static List<Car> list = new ArrayList<>();
+    public static void main(String[] args) {
+        createCars();
+        Garage garage=new Garage(10,list);
+        garage.sortM(list);
+        garage.sortK(list);
+    }
+
+    public static void createCars(){//создаем листы машин
+        list.add(new Rolls_Royce("sadad", "jhsadf", 231, 2431,123123, "iahsbduasd", 6));
+        list.add(new Bugatti("err", "werw", 2342, 1324,23533, "cbvsfgsg", 3));
+        list.add(new Lamborgini("err", "werw", 2342, 1231241,23533, "cbvsfgsg", 1));
+    }
+}
+
+abstract class Car {//класс машины
+    String color;
+     String korobka;
+     Integer speed;
+     Integer price;
+     static Integer maxSpeed;
+
+    public Car(String color, String korobka, Integer speed, Integer price, Integer maxSpeed) {
+        this.color = color;
+        this.korobka = korobka;
+        this.speed = speed;
+        this.price = price;
+        this.maxSpeed = maxSpeed;
+    }
+
+    public abstract Integer getPrice();
+
+    public abstract Integer getKolichestvo();
+
+    public abstract String getName();
+
+
+    public void stop() {
+        System.out.println("Конец движения");
+    }
+
+    public void start() {
+        System.out.println("Начало движения");
+    }
+
+    public void accelerate(int speed) {
+        this.speed = maxSpeed;
+    }
+}
+class Rolls_Royce extends Car{//дочерний класс
+        String name;
+        Integer kolichestvo;
+        public Rolls_Royce(String color, String korobka, Integer speed, Integer price, Integer maxSpeed, String name, Integer kolichestvo) {
+            super(color, korobka, speed, price, maxSpeed);
+            this.name=name;
+            this.kolichestvo=kolichestvo;
+        }
+
+        public Integer getKolichestvo(){
+            return kolichestvo;
+        }
+
+        public Integer getPrice() {
+            return price;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+
+     class Bugatti extends Car{//дочерний класс
+        String name;
+        Integer kolichestvo;
+        public Bugatti(String color, String korobka, Integer speed, Integer price, Integer maxSpeed, String name, Integer kolichestvo) {
+            super(color, korobka, speed, price, maxSpeed);
+            this.name=name;
+            this.kolichestvo=kolichestvo;
+        }
+        public Integer getPrice() {
+            return price;
+        }
+        public Integer getKolichestvo(){
+            return kolichestvo;
+        }
+
+        public Integer getMaxSpeed() {
+            return maxSpeed;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+
+class Lamborgini extends Car{//дочерний класс
+    String name;
+    Integer kolichestvo;
+    public Lamborgini(String color, String korobka, Integer speed, Integer price, Integer maxSpeed, String name, Integer kolichestvo) {
+        super(color, korobka, speed, price, maxSpeed);
+        this.name=name;
+        this.kolichestvo=kolichestvo;
+    }
+    public Integer getPrice() {
+        return price;
+    }
+    public Integer getKolichestvo(){
+        return kolichestvo;
+    }
+
+    public Integer getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+class Garage{
+    private Integer vmest;
+    public static List<Car> list;
+
+    public Garage(Integer vmest, List<Car> list){
+        this.vmest=vmest;
+        this.list=list;
+    }
+
+    public static void sortM(List<Car> empl) {//сортировка по цене
+        System.out.println();
+        empl.sort(new Comparator<Car>() {
+
+            public int compare(Car o1, Car o2) {
+                if (o1.getPrice() == o2.getPrice()) return 0;
+                else if (o1.getPrice() < o2.getPrice()) return 1;
+                else return -1;
+            }
+        });
+        for (int i = 0; i < empl.size(); i++) {
+            System.out.println(empl.get(i).getName() + " "  + empl.get(i).getPrice());
+        }
+    }
+
+    public static void sortK(List<Car> empl) {//сортировка по количеству
+        System.out.println();
+        empl.sort(new Comparator<Car>() {
+
+            public int compare(Car o1, Car o2) {
+                if (o1.getKolichestvo() == o2.getKolichestvo()) return 0;
+                else if (o1.getKolichestvo() < o2.getKolichestvo()) return 1;
+                else return -1;
+            }
+        });
+        for (int i = 0; i < empl.size(); i++) {
+            System.out.println(empl.get(i).getName() + " "  + empl.get(i).getKolichestvo());
+        }
+    }
+
+}
