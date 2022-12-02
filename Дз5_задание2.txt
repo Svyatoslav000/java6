@@ -1,0 +1,62 @@
+import java.util.ArrayList;
+
+
+class potoki extends Thread {//потоки
+
+    public ArrayList<Integer> bufer;
+    public int size;
+
+    potoki(String name, ArrayList bufer, int size){//конструктор для потока
+        super(name);
+        this.bufer = bufer;
+        this.size = size;
+    }
+
+    public void run(){
+        System.out.println(Thread.currentThread().getName());//имя потока
+        if (Thread.currentThread().getName().equalsIgnoreCase("Производитель")){
+            Integer i = (int)(Math.random()*100) + 1;//рандомное количество чисел
+            for (int j=0; j<i ;j++){
+                zapoln();//заполняет числами буфер
+            }
+            System.out.println(bufer);
+        }
+        else{
+            Integer i = (int)(Math.random()*100) + 1;//рандомное количество чисел
+            for (int j=0; j<i ;j++){
+                udalyaem();//удаляем числа из буфера
+            }
+            System.out.println(bufer);
+        }
+    }
+
+    public void zapoln(){
+        synchronized (bufer) {
+            if (bufer.size() < size) {//добавляет число, если в буфере есть место
+                Integer x = (int)(Math.random()*100);
+                bufer.add(x);
+                bufer.notifyAll();
+            }
+        }
+    }
+
+    public void udalyaem(){
+        synchronized (bufer) {//удаляет число, если буфер не пустой
+            if (bufer.size() != 0) {
+                bufer.remove(0);
+                bufer.notifyAll();
+            }
+        }
+    }
+}
+
+
+public class Main {
+
+    public static void main(String[] args) {
+        int size=7;//задаем размер
+        ArrayList<Integer> bufer= new ArrayList<>();//создает лист
+        new potoki("Производитель", bufer, size).start();//поток производителя
+        new potoki("Потребитель", bufer, size).start();//поток потребителя
+    }
+}

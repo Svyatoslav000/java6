@@ -1,0 +1,18 @@
+class potok extends Thread {//создаём поток
+
+    potok(String name){//конструктор потока
+        super(name);
+    }
+
+    public void run(){
+        System.out.println(Thread.currentThread().getName());//печатает имя
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        new potok("Поток 1").start();//поток 1
+        new potok("Поток 2").start();//поток 2
+    }
+}
