@@ -1,4 +1,4 @@
-class potok extends Thread {//создаём поток
+class potok extends Thread {//поток
 
     potok(String name){//конструктор потока
         super(name);
