@@ -1,0 +1,14 @@
+public class Main
+{
+    public static void main(String[] args) {
+        vivod(7,7);
+    }
+
+    static int vivod(int a, int l){ //рекурсией выводим числа от 1 до n
+        System.out.println(a-l+1);
+        if (l == 1){
+            return 1;
+        }
+        return vivod(a, l - 1);
+    }
+}

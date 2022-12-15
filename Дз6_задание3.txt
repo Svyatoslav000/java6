@@ -1,0 +1,29 @@
+public class Main
+{
+    public static void main(String[] args) {
+        System.out.println("cos(x^5) + x^4 - 345.3*x - 23 = 0");
+        System.out.println(Popolam(0,10,0.001));
+    }
+
+    public static double F(double x){
+        return Math.cos(Math.pow(x,5)) + Math.pow(x,4) - 345.3*x - 23;
+    }
+
+    public static double Popolam(double a, double b, double esp){
+        double c=(a+b)/2;
+        if (b-a <= esp){
+            return c;
+        }
+        if (F(a)*F(c) < 0){//проверяем что функция принимает значения противоположных знаков на концах отрезка
+            return Popolam(a,c,esp);
+        }
+        else{
+            if (F(a)*F(c) > 0){//когда не принимает
+                return Popolam(c,b,esp);
+            }
+            else{
+                return c;
+            }
+        }
+    }
+}

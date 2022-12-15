@@ -1,0 +1,64 @@
+public class Main
+{
+    public static void main(String[] args) {
+        int[] m={1,2,3,4,6,5,7,8,9,0,11,55,8,72,15,12,7,38};//создаем массив чисел
+        long start1 = System.currentTimeMillis();//время начала работы перебора
+        System.out.println(ProstoyPerebor(8,m));
+        long ss=System.currentTimeMillis() - start1;
+        System.out.println("Время для Перебора : " + ss );
+
+        long start2 = System.currentTimeMillis();//время начала работы Двоичного поиска
+        boolean sorted = false;//сортировка массива
+        int a;
+        while(!sorted) {
+            sorted = true;
+            for (int i = 0; i < m.length - 1; i++) {
+                if (m[i] > m[i+1]) {
+                    a = m[i];
+                    m[i] = m[i+1];
+                    m[i+1] = a;
+                    sorted = false;
+                }
+            }
+        }
+        System.out.println(DvoichiyPerebor(m,0 , m.length - 1, 8));
+        long s=System.currentTimeMillis() - start2;
+        System.out.println("Время для Двоичного поиска : " + s );
+
+        if (ss<s){//сравниваем
+            System.out.println("Перебор быстрее!");
+        }
+        else if (s<ss){
+            System.out.println("Двоичный поиск быстрее!");
+        }
+        else {
+            System.out.println("Никто не быстрее (0.0)");
+        }
+    }
+
+    static String ProstoyPerebor(int a, int[] m){//перебираем элементы массива
+        for(int i: m){
+            if (a==i){
+                return "Есть";//заданный элемент в массиве есть
+            }
+        }
+        return "Нет";//такого элемента нет
+    }
+
+    static String DvoichiyPerebor(int[] m, int first, int last, int e) {//двоичный перебор
+
+        if (last >= first) {
+            int mid = first + (last - first) / 2;//средний элемент
+
+            if (m[mid] == e)
+                return "Есть";//заданный элемент в массиве есть
+
+            if (m[mid] > e) //средний элемент больше искомого
+                return DvoichiyPerebor(m, first, mid - 1, e);
+
+            return DvoichiyPerebor(m, mid + 1, last, e);
+        }
+        return "Нет";//такого элемента нет
+    }
+
+}

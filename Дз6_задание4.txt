@@ -1,0 +1,93 @@
+class uzel{//класс узла
+    int data;
+    uzel left, right;
+
+    public uzel(int data){
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+public class Main {
+    static uzel root;
+
+    public int dobavlyaem(int value){//добавляем узел
+        uzel newuzel, current;
+
+        newuzel = new uzel(value);
+        if(root == null){
+            root = newuzel;
+            current = root;
+        }
+        else{
+            current = root;
+            while(current.left != null || current.right != null){
+                if(newuzel.data < current.data){
+                    if(current.left != null)
+                        current = current.left;
+                    else
+                        break;
+                }
+                else{
+                    if(current.right != null)
+                        current = current.right;
+                    else
+                        break;
+                }
+            }
+            if(newuzel.data < current.data)
+                current.left = newuzel;//если меньше то добавляем влево
+            else
+                current.right = newuzel;//если больше, то добавляем вправо
+        }
+
+        return value;
+    }
+
+    public void vivod(uzel root){//выводим наше дерево
+        if (root != null) {
+            vivod(root.left);
+            System.out.println(root.data);
+            vivod(root.right);
+        }
+    }
+
+    public boolean poisk(int value){//поисе узла в дереве
+        boolean sravn = false;//по умаолчанию false для удобства перебора
+        uzel current;
+        current = root;
+        while(current!= null){
+            if(current.data == value){
+                sravn = true;
+                break;//если есть в дерево то стразу тру и выходим
+            }
+            else if(current.data > value)
+                current = current.left;//берем левый узел для сравнения
+            else
+                current = current.right;//берем правый узел для сравнения
+        }
+        System.out.println("Есть ли узел "+value+" в дереве? : "+sravn);
+        return sravn;
+    }
+
+
+    public static void main(String[] args) {
+
+        Main b = new Main();
+        b.dobavlyaem(5);
+        b.dobavlyaem(3);
+        b.dobavlyaem(2);
+        b.dobavlyaem(4);
+        b.dobavlyaem(7);
+        b.dobavlyaem(6);
+        b.dobavlyaem(8);
+        b.dobavlyaem(9);
+        b.vivod(root);
+        b.poisk(3);
+        b.poisk(9);
+        b.poisk(10);
+        b.poisk(5);
+    }
+
+}
