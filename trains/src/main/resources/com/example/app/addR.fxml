@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #191970;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.app.addRController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <Button fx:id="on_mainR" layoutX="39.0" layoutY="20.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="96.0" style="-fx-background-color: #FFA07A;" text="На главную" textFill="WHITE">
+                    <font>
+                        <Font name="System Italic" size="14.0" />
+                    </font>
+                </Button>
+            </children></AnchorPane>
+        <AnchorPane layoutY="104.0" prefHeight="296.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
+            <children>
+                <Label layoutX="206.0" layoutY="21.0" prefHeight="30.0" prefWidth="308.0" text="Введите данные:">
+                    <font>
+                        <Font name="System Bold Italic" size="25.0" />
+                    </font>
+                </Label>
+                <Button fx:id="addR" layoutX="230.0" layoutY="252.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="162.0" style="-fx-background-color: #191970; -fx-border-color: black; -fx-border-radius: 7;" text="Добавить рейс" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                    </font>
+                </Button>
+                <TextField fx:id="timeOT" layoutX="14.0" layoutY="111.0" promptText="Время отправления" />
+                <TextField fx:id="fromG" layoutX="14.0" layoutY="63.0" promptText="Откуда" />
+                <TextField fx:id="train" layoutX="236.0" layoutY="201.0" promptText="Поезд" />
+                <TextField fx:id="price" layoutX="236.0" layoutY="157.0" prefHeight="25.0" prefWidth="149.0" promptText="Цена" />
+            <TextField fx:id="dataPr" layoutX="236.0" layoutY="111.0" promptText="Дата приезда" />
+            <TextField fx:id="timePR" layoutX="467.0" layoutY="111.0" promptText="Время приезда" />
+            <TextField fx:id="datt" layoutX="467.0" layoutY="63.0" promptText="Дата отправления" />
+            <TextField fx:id="whereG" layoutX="236.0" layoutY="63.0" promptText="Куда" />
+            </children>
+        </AnchorPane>
+        <Label layoutX="246.0" layoutY="24.0" text="Trains.io" textFill="WHITE">
+            <font>
+                <Font name="System Bold Italic" size="47.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
