@@ -1,6 +1,19 @@
 package com.example.app;
-
+/**
+ * Класс, описывающий рейсы.
+ */
 public class Rais {
+    /**
+     * Создание экземпляра класса Rais.
+     * @param otkuda - начальная точка маршрута.
+     * @param kuda - конечная точка маршрута.
+     * @param vrOt - время отправления рейса.
+     * @param vrPr - время прибытия рейса.
+     * @param cost - стоимость рейса.
+     * @param datOt - дата отправления рейса.
+     * @param datPr - дата прибытия рейса.
+     * @param tr - поезд.
+     */
     public Rais(String otkuda, String kuda, String vrOt, String vrPr, String cost, String datOt, String datPr, String tr) {
         this.otkuda = otkuda;
         this.kuda = kuda;
@@ -21,7 +34,9 @@ public class Rais {
     private String datOt;
     private String datPr;
     private String tr;
-
+    /**
+     * Getter и Setter для всех переменных.
+     */
     public String getKuda() {
         return kuda;
     }

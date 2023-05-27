@@ -7,10 +7,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
+/**
+ * Главный класс
+ */
 public class MainApplication extends Application {
 
-
+    /**
+     * Метод start() запускает приложение
+     * @param stage основное окно приложения
+     * @throws IOException если файл fxml не найден
+     */
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -20,7 +26,9 @@ public class MainApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
+    /**
+     * Главный метод, который запускает приложение
+     */
     public static void main(String[] args) {
         launch();
     }

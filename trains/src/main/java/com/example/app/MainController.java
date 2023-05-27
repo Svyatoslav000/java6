@@ -1,3 +1,7 @@
+/**
+ * * Класс MainController является контроллером для экрана main.fxml.
+ * Он обрабатывает навигацию на другие экраны
+ */
 package com.example.app;
 
 import javafx.fxml.FXML;
@@ -28,7 +32,10 @@ public class MainController {
 
     @FXML
     private Button signUP;
-
+    /**
+     * Этот метод вызывается при инициализации.
+     * Он настраивает обработчики событий для кнопок
+     */
     @FXML
     void initialize() {
 

@@ -1,3 +1,6 @@
+/**
+ * * Класс Const хранит константы по базе данных к которым будем обращаться.
+ */
 package com.example.app;
 
 public class Const {

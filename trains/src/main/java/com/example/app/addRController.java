@@ -1,3 +1,8 @@
+/**
+ * * Класс AddController_T является контроллером для экрана addR.fxml.
+ * Он обрабатывает регистрацию нового рейса
+ * и навигацию на главную страницу.
+ */
 package com.example.app;
 
 import javafx.fxml.FXML;
@@ -50,7 +55,10 @@ public class addRController {
 
     @FXML
     private TextField whereG;
-
+    /**
+     * Этот метод вызывается при инициализации.
+     * Он настраивает обработчики событий для кнопок
+     */
     @FXML
     void initialize() {
         addR.setOnAction(event -> {
@@ -75,7 +83,12 @@ public class addRController {
 
 
     }
-    private void signUpNewR() {// Метод регистрации новой конференции
+    /**
+     * Этот метод обрабатывает регистрацию нового рейса путем извлечения полей ввода c экрана,
+     * проверки ввода, создания нового объекта Rais и попытки зарегистрировать его в базе данных.
+     * В случае успеха он переходит на главную страницу.
+     */
+    private void signUpNewR() {// Метод регистрации нового рейса
         DatabaseHandler dbHandler = new DatabaseHandler();// Создание объекта класса DatabaseHandler для работы с базой данных
         String dataPrText = dataPr.getText().trim();// Получение значений полей для регистрации из формы
         String dattText = datt.getText().trim();
@@ -86,7 +99,7 @@ public class addRController {
         String trainText = train.getText().trim();
         String whereGText = whereG.getText().trim();
         if (!dataPrText.equals("") && !dattText.equals("") && !fromGText.equals("") && !priceText.equals("") && !timeOTText.equals("") && !timePRText.equals("") && !whereGText.equals("") && !priceText.equals("") &&isNumeric(priceText) && !isNumeric(whereGText) && !isNumeric(fromGText) && !isNumeric(trainText)) {// Проверка заполнения полей и валидности данных
-            Rais rais = new Rais(fromGText, whereGText, timeOTText, timePRText,priceText, dattText, dataPrText, trainText);// Создание объекта пользователя
+            Rais rais = new Rais(fromGText, whereGText, timeOTText, timePRText,priceText, dattText, dataPrText, trainText);// Создание объекта рейса
 
             addR.getScene().getWindow().hide();
 
@@ -101,7 +114,7 @@ public class addRController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
-            try {// Попытаться зарегистрировать нового пользователя в базе данных
+            try {// Попытаться зарегистрировать нового рейса в базе данных
                 dbHandler.signUpRais(rais);
             } catch (SQLException e) {
                 throw new RuntimeException(e);// Выбросить исключение, если регистрация не удалась
@@ -111,7 +124,11 @@ public class addRController {
         }
     }
 
-
+    /**
+     * Этот метод проверяет, является ли данная строка допустимым целым числом, пытаясь проанализировать ее.
+     * @param str Строка для проверки.
+     * @return является ли строка допустимым целым числом или нет.
+     */
     public static boolean isNumeric(String str) {// Метод для проверки является ли строка числом
         try {
             Integer.parseInt(str);

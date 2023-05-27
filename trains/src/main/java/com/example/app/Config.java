@@ -1,3 +1,6 @@
+/**
+ * * Класс Config хранит данные по базе данных к которым будем подключаться.
+ */
 package com.example.app;
 
 public class Config {

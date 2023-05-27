@@ -1,3 +1,8 @@
+/**
+ * * Класс AddController_T является контроллером для экрана addTrain.fxml.
+ * Он обрабатывает регистрацию нового поезда, выборку и отображение информации о поездах из базы данных
+ * и навигацию на главную страницу.
+ */
 package com.example.app;
 
 import javafx.fxml.FXML;
@@ -46,7 +51,10 @@ public class AddController_T {
 
     @FXML
     private TextArea show_Tr;
-
+    /**
+     * Этот метод вызывается при инициализации.
+     * Он настраивает обработчики событий для кнопок
+     */
     @FXML
     void initialize() {
         addTr.setOnAction(event -> {
@@ -74,7 +82,12 @@ public class AddController_T {
             stage.show();
         });
     }
-    private void signUpNewUser() {// Метод регистрации новой конференции
+    /**
+     * Этот метод обрабатывает регистрацию нового поезда путем извлечения полей ввода c экрана,
+     * проверки ввода, создания нового объекта Train и попытки зарегистрировать его в базе данных.
+     * В случае успеха он переходит на главную страницу.
+     */
+    private void signUpNewUser() {// Метод регистрации нового поезда
         DatabaseHandler dbHandler = new DatabaseHandler();// Создание объекта класса DatabaseHandler для работы с базой данных
         String nameText = Add_T_Name.getText().trim();// Получение значений полей для регистрации из формы
         String kolMText = Add_T_kolM.getText().trim();
@@ -96,7 +109,7 @@ public class AddController_T {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
-            try {// Попытаться зарегистрировать нового пользователя в базе данных
+            try {// Попытаться зарегистрировать нового поезда в базе данных
                 dbHandler.signUpTrain(train);
             } catch (SQLException e) {
                 throw new RuntimeException(e);// Выбросить исключение, если регистрация не удалась
@@ -106,7 +119,11 @@ public class AddController_T {
         }
     }
 
-
+    /**
+     * Этот метод проверяет, является ли данная строка допустимым целым числом, пытаясь проанализировать ее.
+     * @param str Строка для проверки.
+     * @return является ли строка допустимым целым числом или нет.
+     */
     public static boolean isNumeric(String str) {// Метод для проверки является ли строка числом
         try {
             Integer.parseInt(str);

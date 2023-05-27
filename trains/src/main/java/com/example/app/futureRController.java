@@ -1,3 +1,8 @@
+/**
+ * * Класс futureRController является контроллером для экрана futureR.fxml.
+ * Он обрабатывает выборку и отображение информации о рейсах из базы данных
+ * и навигацию на главную страницу.
+ */
 package com.example.app;
 
 import javafx.fxml.FXML;
@@ -28,7 +33,10 @@ public class futureRController {
 
     @FXML
     private Button on_mainF;
-
+    /**
+     * Этот метод вызывается при инициализации.
+     * Он настраивает обработчики событий для кнопок
+     */
     @FXML
     void initialize() {
         futR_button.setOnAction(event -> {
