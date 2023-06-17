@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #191970;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+        <AnchorPane layoutY="104.0" prefHeight="296.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
+            <children>
+                <Label layoutX="201.0" layoutY="14.0" prefHeight="36.0" prefWidth="370.0" text="Введите катаог:" textFill="#8a8a8a">
+                    <font>
+                        <Font name="System Bold Italic" size="25.0" />
+                    </font>
+                </Label>
+            <TextField fx:id="p_id" layoutX="248.0" layoutY="56.0" prefHeight="36.0" prefWidth="158.0" promptText="Каталог">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Button fx:id="r_on_main" layoutX="260.0" layoutY="249.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="112.0" style="-fx-background-color: #191970; -fx-border-color: black; -fx-border-radius: 7;" text="Поиск" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Button>
+            <TextArea fx:id="katalogsID" layoutX="105.0" layoutY="108.0" prefHeight="115.0" prefWidth="422.0" />
+            </children>
+        </AnchorPane>
+        <Label layoutX="200.0" layoutY="25.0" text="Katalog.io" textFill="WHITE">
+            <font>
+                <Font name="System Bold Italic" size="47.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
